@@ -22,11 +22,8 @@ namespace Player
         [SerializeField] private Vector3 groundCheckOffset;
         [SerializeField] private LayerMask groundLayer;
 
-        private float _pitch;
-        private float _yaw;
-        [SerializeField]private float minPitch;
-        [SerializeField] private float maxPitch;
-
+        private Vector3 directionRelativetoCamera;
+        
         private void Awake()
         {
             playerManager = GetComponent<PlayerManager>();
@@ -42,13 +39,24 @@ namespace Player
         private void HandleMovement()
         {
             Vector2 cachedInputDirection = playerManager.InputManager.MovementInput;
-            Vector3 moveDir = Vector3.zero;
+            Vector3 moveVelocity = Vector3.zero;
+            Transform cachedCameraTransform = playerManager.MainCamera.transform;
+            
+            Vector3 flatCameraForward = cachedCameraTransform.forward;
+            flatCameraForward.y = 0f;
+            flatCameraForward.Normalize();
+            
+            Vector3 flatCameraRight = cachedCameraTransform.right;
+            flatCameraRight.y = 0f;
+            flatCameraRight.Normalize();
+            
             
             if (cachedInputDirection != Vector2.zero)
             {
                 // XZ movement
-                moveDir = transform.forward * cachedInputDirection.y;
-                moveDir += transform.right * cachedInputDirection.x;
+                moveVelocity = flatCameraForward * cachedInputDirection.y;
+                moveVelocity += flatCameraRight * cachedInputDirection.x;
+                directionRelativetoCamera = moveVelocity.normalized;
             }
 
             if (!IsGrounded())
@@ -64,29 +72,22 @@ namespace Player
             // apply final XZ movement and gravity
             if (playerManager.InputManager.IsSprinting)
             {
-                moveDir *= sprintSpeed;
+                moveVelocity *= sprintSpeed;
             }
             else
             {
-                moveDir *= walkSpeed;
+                moveVelocity *= walkSpeed;
             }
-            moveDir += Vector3.up * verticalVelocity;
-            playerManager.CharacterController.Move(moveDir * Time.deltaTime);
+            moveVelocity += Vector3.up * verticalVelocity;
+            playerManager.CharacterController.Move(moveVelocity * Time.deltaTime);
         }
 
         private void HandleRotation()
         {
-            if (playerManager.InputManager.MouseInput == Vector2.zero)
+            if (playerManager.InputManager.MovementInput == Vector2.zero)
                 return;
 
-            Vector2 input = playerManager.InputManager.MouseInput;
-
-            _yaw += input.x * playerManager.InputManager.sensitivity;
-            _pitch -= input.y * playerManager.InputManager.sensitivity;
-            _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
-
-            transform.rotation = Quaternion.Euler(0, _yaw, 0f);
-            playerManager.CameraTarget.localRotation = Quaternion.Euler(_pitch, 0f, 0f); 
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionRelativetoCamera), rotationSpeed * Time.deltaTime);
         }
 
         public bool IsGrounded()

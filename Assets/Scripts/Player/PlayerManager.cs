@@ -13,6 +13,8 @@ namespace Player
         public PlayerMovementManager MovementManager => movementManager;
         public CharacterController CharacterController => characterController;
         public Transform CameraTarget => cameraTarget;
+        
+        public Camera MainCamera => Camera.main;
 
     }
 }

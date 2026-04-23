@@ -29,7 +29,6 @@ namespace Player
         {
             PlayerInput.actions["Move"].performed += OnMove;
             PlayerInput.actions["Move"].canceled += OnMoveCanceled;
-            PlayerInput.actions["Look"].performed += OnLook;
             PlayerInput.actions["Sprint"].performed += ctx => isSprinting = true;
             PlayerInput.actions["Sprint"].canceled += ctx => isSprinting = false;
         }
@@ -38,7 +37,6 @@ namespace Player
         {
             PlayerInput.actions["Move"].performed -= OnMove;
             PlayerInput.actions["Move"].canceled -= OnMoveCanceled;
-            PlayerInput.actions["Look"].performed -= OnLook;
         }
 
         private void OnMove(InputAction.CallbackContext ctx)
@@ -49,11 +47,7 @@ namespace Player
         {
             movementInput = Vector2.zero;;
         }
-        private void OnLook(InputAction.CallbackContext ctx)
-        {
-            mouseInput = ctx.ReadValue<Vector2>();
-        }
-        
+       
         
     }
 }
