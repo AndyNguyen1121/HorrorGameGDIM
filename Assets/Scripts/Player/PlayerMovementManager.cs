@@ -84,10 +84,11 @@ namespace Player
 
         private void HandleRotation()
         {
-            if (playerManager.InputManager.MovementInput == Vector2.zero)
-                return;
+            /*if (playerManager.InputManager.MovementInput == Vector2.zero)
+                return;*/
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(directionRelativetoCamera), rotationSpeed * Time.deltaTime);
+            playerManager.CharacterRotator.rotation = Quaternion.LookRotation(directionRelativetoCamera);
+            transform.rotation = Quaternion.Slerp(transform.rotation, playerManager.CharacterRotator.rotation, rotationSpeed * Time.deltaTime);
         }
 
         public bool IsGrounded()
