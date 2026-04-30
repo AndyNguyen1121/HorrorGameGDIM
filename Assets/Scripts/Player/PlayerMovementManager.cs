@@ -32,8 +32,11 @@ namespace Player
         // Update is called once per frame
         private void Update()
         {
-            HandleMovement();
-            HandleRotation();
+            if (!playerManager.isGrabbed)
+            {
+                HandleMovement();
+                HandleRotation();
+            }
         }
 
         private void HandleMovement()
@@ -84,9 +87,6 @@ namespace Player
 
         private void HandleRotation()
         {
-            /*if (playerManager.InputManager.MovementInput == Vector2.zero)
-                return;*/
-
             playerManager.CharacterRotator.rotation = Quaternion.LookRotation(directionRelativetoCamera);
             transform.rotation = Quaternion.Slerp(transform.rotation, playerManager.CharacterRotator.rotation, rotationSpeed * Time.deltaTime);
         }
