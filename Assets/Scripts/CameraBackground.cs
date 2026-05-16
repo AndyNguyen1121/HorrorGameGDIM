@@ -4,7 +4,7 @@ using UnityEngine;
 public class CameraBackground : MonoBehaviour
 {
     public Camera targetCamera;
-    public float distance = 300f;
+    public float distance = 10f;
 
     void Update()
     {
@@ -12,13 +12,12 @@ public class CameraBackground : MonoBehaviour
             targetCamera = Camera.main;
 
         transform.position = targetCamera.transform.position + targetCamera.transform.forward * distance;
-
         transform.rotation = targetCamera.transform.rotation;
 
         float height = 2f * distance * Mathf.Tan(targetCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
-
         float width = height * targetCamera.aspect;
 
-        transform.localScale = new Vector3(width, height, 1f);
+
+        // transform.localScale = new Vector3(width, height, 1f);
     }
 }
