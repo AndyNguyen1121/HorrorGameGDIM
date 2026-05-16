@@ -110,6 +110,7 @@ MonoBehaviour:
   movementManager: {fileID: 2052247107547928530}
   characterController: {fileID: 2826298040024759177}
   characterRotator: {fileID: 7693622263654834018}
+  isGrabbed: 0
 --- !u!114 &1513399694931925060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +392,7 @@ GameObject:
   - component: {fileID: 3779205446302842326}
   m_Layer: 0
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
