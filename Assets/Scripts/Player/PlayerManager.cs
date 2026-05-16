@@ -12,7 +12,7 @@ namespace Player
         [SerializeField] private PlayerMovementManager movementManager;
         [SerializeField] private CharacterController characterController;
         [FormerlySerializedAs("cameraTarget")] [SerializeField] private Transform characterRotator;
-        private Transform originalParent;
+        public Transform originalParent;
 
         public PlayerInputManager InputManager => inputManager;
         public PlayerMovementManager MovementManager => movementManager;
@@ -20,9 +20,7 @@ namespace Player
         public Transform CharacterRotator => characterRotator;
         
         public Camera MainCamera => Camera.main;
-
-        [Header("Flags")] 
-        public bool isGrabbed;
+        
 
         private void Awake()
         {
@@ -38,20 +36,9 @@ namespace Player
             originalParent = transform.parent;
         }
 
-        public void GrabPlayer(Transform grabPoint, float duration)
+        public void EnablePlayerMovement(bool Active)
         {
-            characterController.enabled = false;
-            isGrabbed = true;
-            transform.parent = grabPoint;
-            transform.DOLocalMove(Vector3.zero, duration);
-            transform.DORotateQuaternion(grabPoint.rotation, duration);
-        }
-
-        public void UngrabPlayer()
-        {
-            characterController.enabled = true;
-            isGrabbed = false;
-            transform.parent = originalParent;
+            characterController.enabled = Active;
         }
 
     }
