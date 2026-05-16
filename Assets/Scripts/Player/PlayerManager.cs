@@ -1,5 +1,7 @@
 using System;
+using Cameras;
 using DG.Tweening;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -19,7 +21,9 @@ namespace Player
         public CharacterController CharacterController => characterController;
         public Transform CharacterRotator => characterRotator;
         
-        public Camera MainCamera => Camera.main;
+        public UnityEngine.Camera MainCamera => UnityEngine.Camera.main;
+
+        public UnityEngine.Camera currentCamera;
         
 
         private void Awake()
@@ -32,8 +36,12 @@ namespace Player
             {
                 Destroy(gameObject);
             }
-            
             originalParent = transform.parent;
+        }
+
+        private void Start()
+        {
+            CameraManager.instance.ActivateCamera(currentCamera);
         }
 
         public void EnablePlayerMovement(bool Active)
