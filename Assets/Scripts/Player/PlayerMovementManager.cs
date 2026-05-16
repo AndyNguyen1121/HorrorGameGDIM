@@ -32,7 +32,7 @@ namespace Player
         // Update is called once per frame
         private void Update()
         {
-            if (!playerManager.isGrabbed)
+            if (playerManager.CharacterController.enabled)
             {
                 HandleMovement();
                 HandleRotation();
