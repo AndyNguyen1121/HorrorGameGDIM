@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -23,6 +24,8 @@ namespace Player
         [SerializeField] private LayerMask groundLayer;
 
         private Vector3 directionRelativetoCamera;
+        private bool lockMovementToForward = false;
+        private Coroutine lockMovementToForwardCoroutine;
         
         private void Awake()
         {
@@ -43,7 +46,7 @@ namespace Player
         {
             Vector2 cachedInputDirection = playerManager.InputManager.MovementInput;
             Vector3 moveVelocity = Vector3.zero;
-            Transform cachedCameraTransform = playerManager.MainCamera.transform;
+            Transform cachedCameraTransform = playerManager.currentCamera.transform;
             
             Vector3 flatCameraForward = cachedCameraTransform.forward;
             flatCameraForward.y = 0f;
@@ -54,12 +57,17 @@ namespace Player
             flatCameraRight.Normalize();
             
             
-            if (cachedInputDirection != Vector2.zero)
+            if (cachedInputDirection != Vector2.zero && !lockMovementToForward)
             {
                 // XZ movement
                 moveVelocity = flatCameraForward * cachedInputDirection.y;
                 moveVelocity += flatCameraRight * cachedInputDirection.x;
                 directionRelativetoCamera = moveVelocity.normalized;
+            }
+            else if (lockMovementToForward)
+            {
+                moveVelocity = transform.forward;
+                directionRelativetoCamera = transform.forward;
             }
 
             if (!IsGrounded())
@@ -94,6 +102,22 @@ namespace Player
         public bool IsGrounded()
         {
             return Physics.OverlapSphere(transform.position + groundCheckOffset, groundCheckRadius, groundLayer).Length > 0;
+        }
+
+        public void DisableChangingDirection(float duration)
+        {
+            if (lockMovementToForwardCoroutine != null)
+            {
+                StopCoroutine(lockMovementToForwardCoroutine);
+            }
+            lockMovementToForwardCoroutine = StartCoroutine(PauseChangingDirection(duration));
+        }
+
+        private IEnumerator PauseChangingDirection(float duration)
+        {
+            lockMovementToForward = true;
+            yield return new WaitForSeconds(duration);
+            lockMovementToForward = false;
         }
 
         private void OnDrawGizmos()
