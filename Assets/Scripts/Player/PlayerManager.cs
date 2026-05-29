@@ -24,6 +24,10 @@ namespace Player
         public UnityEngine.Camera MainCamera => UnityEngine.Camera.main;
 
         public UnityEngine.Camera currentCamera;
+
+        public event Action OnSpacePressed;
+
+        public bool canMove = true;
         
 
         private void Awake()
@@ -44,9 +48,15 @@ namespace Player
             CameraManager.instance.ActivateCamera(currentCamera);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                OnSpacePressed?.Invoke();
+        }
+
         public void EnablePlayerMovement(bool Active)
         {
-            characterController.enabled = Active;
+            canMove = Active;
         }
 
     }
