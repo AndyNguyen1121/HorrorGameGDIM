@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using DG.Tweening;
 using Player;
 using UnityEngine;
@@ -14,6 +15,10 @@ namespace Enemy
         [SerializeField] private NavMeshAgent agent;
         private bool _isGrabbing;
         private PlayerManager _playerManager;
+        [SerializeField] private Transform goalTarget;
+        public int spacePresses;
+        public bool canGrab = true;
+        
 
         private void Awake()
         {
@@ -23,32 +28,48 @@ namespace Enemy
         private void Start()
         {
             _playerManager = PlayerManager.Instance;
+            _playerManager.OnSpacePressed += PlayerAttemptToEscape;
+        }
+
+        private void OnDisable()
+        {
+            _playerManager.OnSpacePressed -= PlayerAttemptToEscape;
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (_isGrabbing)
             {
-                GrabPlayer(!_isGrabbing);
+                agent.SetDestination(goalTarget.position);
+            }
+            else
+            {
+                agent.SetDestination(PlayerManager.Instance.transform.position);
             }
             
-            agent.SetDestination(PlayerManager.Instance.transform.position);
-            
-            if (!_isGrabbing)
-                HandleRotation();
+            HandleRotation();
         }
 
         private void HandleRotation()
         {
             Vector3 desiredRotation = agent.desiredVelocity;
 
-            if (desiredRotation.magnitude < Mathf.Epsilon)
+            if (!_isGrabbing && desiredRotation.magnitude < Mathf.Epsilon)
             {
                 desiredRotation = PlayerManager.Instance.transform.position - transform.position;
             }
             desiredRotation.y = 0;
             Quaternion finalizedRotation = Quaternion.LookRotation(desiredRotation.normalized);
             transform.rotation = Quaternion.Slerp(transform.rotation, finalizedRotation, rotationSpeed * Time.deltaTime);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player") && !_isGrabbing && canGrab)
+            {
+                canGrab = false;
+                GrabPlayer(true);
+            }
         }
 
         private void GrabPlayer(bool isGrabbing)
@@ -67,6 +88,27 @@ namespace Enemy
                 _isGrabbing = false;
                 _playerManager.transform.parent = _playerManager.originalParent;
             }
+        }
+
+        private void PlayerAttemptToEscape()
+        {
+            if (!_isGrabbing)
+                return;
+            
+            ++spacePresses;
+            if (spacePresses == 10)
+            {
+                GrabPlayer(false);
+                spacePresses = 0;
+                Debug.Log("let go");
+                StartCoroutine(ActivateGrabCooldown(3f));
+            }
+        }
+
+        private IEnumerator ActivateGrabCooldown(float duration)
+        {
+            yield return new WaitForSeconds(duration);
+            canGrab = true;
         }
     }
 }
