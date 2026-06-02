@@ -39,10 +39,6 @@ namespace Player
             {
                 Instance = this;
             }
-            else
-            {
-                Destroy(gameObject);
-            }
             originalParent = transform.parent;
         }
 
