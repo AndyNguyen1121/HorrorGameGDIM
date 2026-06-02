@@ -45,7 +45,7 @@ namespace Enemy
         {
             if (_isGrabbing)
             {
-                agent.SetDestination(goalTarget.position);
+                agent.SetDestination(ParentManager.Instance.transform.position);
             }
             else
             {
