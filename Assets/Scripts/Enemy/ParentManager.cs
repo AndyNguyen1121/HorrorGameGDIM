@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using Player;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 namespace Enemy
 {
@@ -31,7 +32,9 @@ namespace Enemy
         {
             if (other.gameObject.CompareTag("Player") && !gameEnded)
             {
-                OnEndGame?.Invoke();
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                SceneManager.LoadScene("LoseScene");
                 gameEnded = true;
                 Debug.Log("Game Ended");
             }

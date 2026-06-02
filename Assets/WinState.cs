@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinState : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class WinState : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !won)
         {
-            winScreen.SetActive(true);
+            SceneManager.LoadScene("WinScene");
             won = true;
         }
     }
