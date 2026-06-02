@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 5f53235f66df24803bc4f4aaa446377b
+guid: 6939dff6f97de4e6c9cd86cba5b4287b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: toaster_color
-    second: {fileID: 2800000, guid: 77b31a60603f741fb9abbdb95b5c9a30, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: toaster_metallic
-    second: {fileID: 2800000, guid: 304226b9141864fab8a87b0f2ac77359, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: toaster_normal
-    second: {fileID: 2800000, guid: 21fbe368fdd27421e9725da771ebbd15, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: toaster_roughness
-    second: {fileID: 2800000, guid: 5b6900b73fea34d618c605ab5d80b934, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
