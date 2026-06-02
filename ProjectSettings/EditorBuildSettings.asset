@@ -12,14 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: 77159ca13a8333242b35c7f35174b852
   - enabled: 1
-    path: Assets/Scenes/Testing/2D Greybox.unity
-    guid: b196b7dc47f25764b8fb6d8387ee3fa8
-  - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 2fef14458a35b734cb4712f1dd40fff4
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: 83b25766d253ab840a6e8de07e51b9f3
+  - enabled: 1
+    path: Assets/Scenes/Testing/Level.unity
+    guid: 8228e79f361298a49814751d970c5e1a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
