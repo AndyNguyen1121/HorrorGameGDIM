@@ -4668,7 +4668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 802051514}
 --- !u!65 &118574851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5789,7 +5789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 802051514}
 --- !u!65 &152956981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9956,6 +9956,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 289dd53735c634141946c786468bce49, type: 3}
   m_PrefabInstance: {fileID: 281279331}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &286545096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 286545097}
+  - component: {fileID: 286545099}
+  - component: {fileID: 286545098}
+  m_Layer: 0
+  m_Name: Back1 (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &286545097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286545096}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -3.9, y: -1.4925346, z: 53.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1913370131}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &286545098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286545096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraToSwitch: {fileID: 939644119}
+--- !u!65 &286545099
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286545096}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 5.66, z: 5.4923406}
+  m_Center: {x: -0.000039458275, y: 0, z: 21.02837}
 --- !u!1001 &286924668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12623,6 +12690,7 @@ Transform:
   - {fileID: 372021463}
   - {fileID: 1395584164}
   - {fileID: 160596058}
+  - {fileID: 1599877282}
   m_Father: {fileID: 1921349773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &358411658
@@ -14197,7 +14265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 81873696}
 --- !u!65 &396113794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14687,7 +14755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 802051514}
 --- !u!65 &412686983
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16071,12 +16139,12 @@ GameObject:
   - component: {fileID: 450007236}
   - component: {fileID: 450007235}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: FloorNavMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &450007235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16243,7 +16311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 0}
+  CameraToSwitch: {fileID: 81873696}
 --- !u!65 &452465606
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21463,7 +21531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 0}
+  CameraToSwitch: {fileID: 846245923}
 --- !u!65 &603415297
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23115,7 +23183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 802051514}
 --- !u!65 &646540328
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25393,7 +25461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 0}
+  CameraToSwitch: {fileID: 846245923}
 --- !u!65 &716499567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29599,7 +29667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 0}
+  CameraToSwitch: {fileID: 81873696}
 --- !u!65 &844030268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30175,7 +30243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 0}
+  CameraToSwitch: {fileID: 846245923}
 --- !u!65 &857849829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32573,7 +32641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 802051514}
 --- !u!65 &920848282
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33044,7 +33112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 802051514}
 --- !u!65 &935235653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33094,7 +33162,7 @@ Transform:
   m_GameObject: {fileID: 939644115}
   serializedVersion: 2
   m_LocalRotation: {x: 0.10888052, y: -0.10999646, z: 0.012123454, w: 0.987876}
-  m_LocalPosition: {x: 11.299988, y: -0.6, z: -25.529999}
+  m_LocalPosition: {x: 28.8, y: -0.6, z: -9.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37339,7 +37407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 1162438193}
 --- !u!65 &1037409899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42660,7 +42728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 81873696}
 --- !u!65 &1191270436
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48222,7 +48290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 802051514}
 --- !u!65 &1352266201
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55557,7 +55625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
+  CameraToSwitch: {fileID: 802051514}
 --- !u!65 &1533459757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56494,7 +56562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 0}
+  CameraToSwitch: {fileID: 846245923}
 --- !u!65 &1567702621
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57332,7 +57400,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1599877282}
   - component: {fileID: 1599877284}
-  - component: {fileID: 1599877283}
   m_Layer: 0
   m_Name: Back1 (13)
   m_TagString: Untagged
@@ -57349,25 +57416,12 @@ Transform:
   m_GameObject: {fileID: 1599877281}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -3.6, y: -1.4925346, z: 15.2}
+  m_LocalPosition: {x: -10.192139, y: 3.77396, z: -46.846313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1913370131}
+  m_Father: {fileID: 357421878}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1599877283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599877281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8631ed61ea2c4d3bbc1556b2bab5d0ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraToSwitch: {fileID: 1155211821}
 --- !u!65 &1599877284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67363,7 +67417,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1599877282}
+  - {fileID: 286545097}
   m_Father: {fileID: 1921349773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1915385178
@@ -74447,6 +74501,7 @@ SceneRoots:
   - {fileID: 1621191689}
   - {fileID: 1392784847}
   - {fileID: 203336912}
+  - {fileID: 450007239}
   - {fileID: 1709275647}
   - {fileID: 1149979081}
   - {fileID: 1921349773}
@@ -74483,6 +74538,5 @@ SceneRoots:
   - {fileID: 1181203780}
   - {fileID: 569862916}
   - {fileID: 1726606615}
-  - {fileID: 450007239}
   - {fileID: 1791055174}
   - {fileID: 185339981}
