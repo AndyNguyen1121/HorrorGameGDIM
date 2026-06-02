@@ -13,7 +13,8 @@ namespace Player
         [SerializeField] private PlayerInputManager inputManager;
         [SerializeField] private PlayerMovementManager movementManager;
         [SerializeField] private CharacterController characterController;
-        [FormerlySerializedAs("cameraTarget")] [SerializeField] private Transform characterRotator;
+        [SerializeField] private Transform characterRotator;
+        [SerializeField] private Animator animator;
         public Transform originalParent;
 
         public PlayerInputManager InputManager => inputManager;
@@ -29,6 +30,8 @@ namespace Player
 
         public bool canMove = true;
         
+        public event Action OnStruggleStart;
+        public event Action OnStruggleEnd;
 
         private void Awake()
         {
@@ -52,6 +55,8 @@ namespace Player
         {
             if (Input.GetKeyDown(KeyCode.Space))
                 OnSpacePressed?.Invoke();
+
+            animator.SetBool("IsMoving", canMove && characterController.velocity.magnitude > 0.1f);
         }
 
         public void EnablePlayerMovement(bool Active)
@@ -59,5 +64,17 @@ namespace Player
             canMove = Active;
         }
 
+        public void EnterStruggleState()
+        {
+            animator.SetBool("IsStruggling", true);
+            animator.CrossFadeInFixedTime("Struggle", 0.1f);
+            OnStruggleStart?.Invoke();
+        }
+
+        public void ExitStruggleState()
+        {
+            animator.SetBool("IsStruggling", false);
+            OnStruggleEnd?.Invoke();
+        }
     }
 }

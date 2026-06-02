@@ -16,9 +16,14 @@ namespace Enemy
         private bool _isGrabbing;
         private PlayerManager _playerManager;
         [SerializeField] private Transform goalTarget;
+        [SerializeField] private Animator animator;
         public int spacePresses;
         public bool canGrab = true;
         
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip grabMusic;
+        [SerializeField] private AudioClip bgMusic;
+        [SerializeField] private AudioClip grabSFX;
 
         private void Awake()
         {
@@ -77,16 +82,25 @@ namespace Enemy
             if (isGrabbing)
             {
                 _playerManager.EnablePlayerMovement(false);
+                _playerManager.EnterStruggleState();
                 _isGrabbing = true;
                 _playerManager.transform.parent = grabPoint;
                 _playerManager.transform.DOLocalMove(Vector3.zero, grabDuration);
-                _playerManager.transform.DORotateQuaternion(grabPoint.rotation, grabDuration);
+                _playerManager.transform.DOLocalRotate(Vector3.zero, grabDuration);
+                animator.CrossFade("Grab", 0.1f);
+                audioSource.resource = grabMusic;
+                audioSource.PlayOneShot(grabSFX);
+                audioSource.Play();
             }
             else
             {
                 _playerManager.EnablePlayerMovement(true);
+                _playerManager.ExitStruggleState();
                 _isGrabbing = false;
                 _playerManager.transform.parent = _playerManager.originalParent;
+                audioSource.resource = bgMusic;
+                audioSource.Play();
+
             }
         }
 
@@ -101,6 +115,7 @@ namespace Enemy
                 GrabPlayer(false);
                 spacePresses = 0;
                 Debug.Log("let go");
+                animator.CrossFade("Release", 0.1f);
                 StartCoroutine(ActivateGrabCooldown(3f));
             }
         }
