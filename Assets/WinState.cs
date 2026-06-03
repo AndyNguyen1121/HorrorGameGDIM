@@ -11,6 +11,8 @@ public class WinState : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !won)
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("WinScene");
             won = true;
         }

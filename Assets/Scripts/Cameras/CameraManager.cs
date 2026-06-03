@@ -29,8 +29,9 @@ namespace Cameras
             foreach (var camera in Cameras)
             {
                 camera.enabled = false;
+                camera.GetComponent<AudioListener>().enabled = false;
             }
-            
+            cam.GetComponent<AudioListener>().enabled = true;
             cam.enabled = true;
         }
     }
